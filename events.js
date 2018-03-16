@@ -3,12 +3,15 @@
 // https://developer.mozilla.org/en-US/docs/Web/Events/DOMContentLoaded
 document.addEventListener('DOMContentLoaded', start)
 
+var colours = ['white', 'red','orange', 'yellow', 'green', 'blue', 'purple', 'black'];
+
 function start () {
   // The first example is done for you. This will change the background colour of the first div
   // when you mouse over it.
   one();
   two();
   three();
+  four();
     
   // Your turn! Create a new function called `two`, then call it from here.
 }
@@ -39,6 +42,11 @@ function three() {
 }
 
 // CREATE FUNCTION four HERE
+function four() {
+  var four = document.getElementById('four');
+  four.addEventListener('click', cycleColour);
+  four.addEventListener('mouseleave', makeWhite);
+}
 
 // Changes the background color of event's target
 function makeBlue (evt) {
@@ -55,4 +63,8 @@ function makeOrange (evt) {
 
 function makeWhite (evt) {
   evt.target.style.backgroundColor = 'white'
+}
+
+function cycleColour (evt) {
+  evt.target.style.backgroundColor = colours[(colours.indexOf(evt.target.style.backgroundColor)+1)%8];
 }
